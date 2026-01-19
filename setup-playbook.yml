@@ -1,0 +1,14 @@
+- name: Basic system setup
+  hosts: web
+  become: true
+tasks
+  - name: Update and upgrade apt packages
+    ansible.builtin.package:
+    name: "*"
+    state: latest
+    become: true
+  - name: Create a new user
+    ansible.builtin.user:
+    name: pritam
+    state: present
+    create_home: true
